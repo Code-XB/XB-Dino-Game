@@ -12,7 +12,6 @@
 from __future__ import annotations
 
 import os
-import sys
 
 import pygame
 
@@ -20,20 +19,6 @@ from . import settings
 
 _ASSET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'assets')
 SHEET_2X_PATH = os.path.join(_ASSET_DIR, 'sprites', 'offline-sprite-2x.png')
-
-
-def find_icon() -> str | None:
-    """定位 icon.ico：优先可执行文件旁（打包后），其次项目根目录。"""
-    candidates = []
-    if getattr(sys, 'frozen', False):
-        candidates.append(os.path.join(os.path.dirname(sys.executable),
-                                       'icon.ico'))
-    candidates.append(os.path.join(os.path.dirname(os.path.dirname(__file__)),
-                                   'icon.ico'))
-    for path in candidates:
-        if os.path.isfile(path):
-            return path
-    return None
 
 # 背景色（canvas 自身填充色，夜间即为 #f7f7f7 的 CSS 反色结果）
 BACKGROUND = {'day': settings.BG_COLOR_DAY, 'night': settings.BG_COLOR_NIGHT}

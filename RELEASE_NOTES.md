@@ -1,9 +1,9 @@
 # XB-Dino-Game v1.0.0 发布说明
 
-> 🦖 Google Chrome 小恐龙（T-Rex Runner）的 Python 1:1 复刻版
+> Google Chrome 小恐龙（T-Rex Runner）的 Python 1:1 复刻版
 > 素材与音效均来自 Chromium 官方仓库，逻辑逐行对照官方源码移植。
 
-## ✨ 特性
+##  特性
 
 - **1:1 官方还原**：精灵图、音效全部来自 Chromium 官方；跳跃物理、碰撞盒、
   速度曲线（6→13）与网页版完全一致
@@ -18,7 +18,7 @@
 - **桌面应用级体验**：安装版支持窗口/任务栏/标题栏统一图标、
   失焦自动暂停、回窗自动继续
 
-## 🎮 操作
+## 操作
 
 | 按键 | 功能 |
 | --- | --- |
@@ -29,21 +29,21 @@
 | M | 静音 |
 | Esc | 退出 |
 
-## 📦 安装
+## 安装
 
 - **安装版**（推荐）：下载 `XB-Dino-Game-Setup-1.0.0.exe`，
   双击安装，和正经应用一样——开始菜单/桌面快捷方式、控制面板可卸载
 - **便携版**：下载 `XB-Dino-Game-1.0.0-portable.exe`，单文件直接运行，
   无需安装、无需 Python 环境
 
-## 📝 说明
+## 说明
 
 - 最高分保存在 `%APPDATA%\XB-Dino-Game\highscore.json`（安装版）
   或程序同目录（便携版/源码运行）
 - 系统要求：Windows 10/11 x64
 - 开源地址：<https://github.com/Code-XB/XB-Dino-Game>
 
-## 🙏 致谢
+## 致谢
 
 - [Chromium](https://github.com/chromium/chromium) — 官方游戏源码与素材
 - [pygame-ce](https://pyga.me/) — 游戏运行时

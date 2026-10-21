@@ -10,13 +10,16 @@
 
 from __future__ import annotations
 
+import base64
+import io
 import math
 import time
 
 import pygame
 
+from . import icon_data
 from . import settings
-from .assets import Renderer, find_icon
+from .assets import Renderer
 from .audio import AudioManager
 from .collision import check_for_collision
 from .entities.horizon import Horizon
@@ -80,14 +83,15 @@ class DinoGame:
         size = (round(settings.CANVAS_W * self.scale),
                 round(settings.CANVAS_H * self.scale))
         flags = 0
-        # 窗口/任务栏图标（须在 set_mode 之前设置才能生效到任务栏）
-        icon_path = find_icon()
-        if icon_path:
-            try:
-                pygame.display.set_icon(
-                    pygame.image.load(icon_path).convert_alpha())
-            except pygame.error:
-                pass
+        # 窗口/任务栏图标：按 pygame 文档在 set_mode 之前设置内嵌 PNG。
+        # 注意不能 convert_alpha()——它要求窗口已创建，在 set_mode 前调用
+        # 会抛 pygame.error，导致图标静默失效（SDL2 会自动缩放到所需尺寸）。
+        try:
+            icon = pygame.image.load(
+                io.BytesIO(base64.b64decode(icon_data.ICON_PNG_B64)))
+            pygame.display.set_icon(icon)
+        except (pygame.error, ValueError):
+            pass
         self.window = pygame.display.set_mode(size, flags)
         pygame.display.set_caption('T-Rex Runner · Google Chrome 小恐龙')
         self.clock = pygame.time.Clock()
